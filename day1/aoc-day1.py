@@ -36,13 +36,32 @@ print('Fuel needed with the fuel\'s mass in mind:', fuel)
 
 # Second Part with recursion ========================================
 
-# fuel = 0
+fuel = 0
 
-# def calc_fuel(size):
-#     if size >3:
-#         return size // 3 - 2
-#     elif:
-#         return 0
+def calc_fuel(size):
+    
+    # print(size)
+    if size > 8:
+        size = size // 3 - 2
+        return size + calc_fuel(size)
+    else:
+        return 0
 
-# with open(inputfilepath, "r") as inputfile:
-#     for line in inputfile:
+# fuel = calc_fuel(100756)
+
+def calc_fuel2(size):
+    size = size // 3 - 2
+    # print(size)
+    if size // 3 - 2 >= 0:
+        return size + calc_fuel2(size)
+    else:
+        return size
+
+# print(calc_fuel2(1969))
+# print(calc_fuel2(100756))
+
+with open(inputfilepath, "r") as inputfile:
+  for line in inputfile:
+      fuel += calc_fuel(int(line))
+
+print('Fuel needed with the fuel\'s mass in mind (recursive):', fuel)
